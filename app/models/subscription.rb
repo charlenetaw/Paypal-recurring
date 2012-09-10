@@ -10,7 +10,7 @@ class Subscription < ActiveRecord::Base
       if paypal_payment_token.present?
         save_with_paypal_payment
       else
-        save_with_stripe_payment
+        #save_with_stripe_payment
       end
     end
   end
