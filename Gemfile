@@ -7,7 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'pg'
 
-
+gem 'stripe'
 #paypal
 gem 'paypal-recurring'
 gem 'heroku'
