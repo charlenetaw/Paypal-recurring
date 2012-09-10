@@ -12,6 +12,9 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(params[:subscription])
     if @subscription.save_with_payment
+      puts "******************************************************"
+      puts @subscription.inspect
+      puts "******************************************************"
       redirect_to @subscription, :notice => "Thank you for subscribing!"
     else
       render :new
@@ -29,5 +32,10 @@ class SubscriptionsController < ApplicationController
       return_url: new_subscription_url(:plan_id => plan.id),
       cancel_url: root_url
     )
+  end
+
+  def cancel
+    response = gateway.cancel_profile("5TULUC2FPQGPQ", :note => 'Payment plan was canceled by user')
+    flash[:notice] = 'You have successfully canceled your membership'
   end
 end
